@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{plantilla/base}">
+
+<head th:replace="plantilla/base::head">
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+
+	<!--	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"-->
+	<!--		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+	<!--	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+	<!--	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">-->
+	<!--	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">-->
+
+
+
+	<!--	<style>-->
+	<!--		.sorting::before {-->
+	<!--			color: white;-->
+	<!--			}-->
+	<!--		.btn-primary{-->
+	<!--		    position: absolute;-->
+	<!--		    top: 125px;-->
+	<!--		    left: 310px;-->
+	<!--		    z-index: 1;		}-->
+	<!--		.btn-primary:hover{-->
+	<!--			transform: scale(1.1);-->
+	<!--		}-->
+
+	<!--	</style>-->
+
+</head>
+
+
+<body>
+<!--	<nav layout:fragment="plantilla/base::nabvar"></nav>-->
+	<!--		<a class="navbar-brand text-white" href="#">-->
+	<!--			Control de Acceso - MCT-->
+	<!--		</a>-->
+	<!--		<img th:src="@{./logo_mct.jpg}" width="135" height="70">-->
+
+	<div layout:fragment="page-content">
+
+		<div class="container-fluid mt-4">
+			<a th:href="@{/new}" class="crear_persona btn btn-primary" title="Registrar persona">&#10010;</a>
+			<div class="card mt-3">
+				<div class="card-body">
+					<table id="tabla_persona"
+						class="table table-hover table-sm table-responsive-md table-bordered text-center mt-5">
+						<thead class="table-primary text-center">
+							<tr class=" th mt-4 th bg-primary text-white ">
+								<th style="text-align: center;">ID </th>
+								<th style="text-align: center;">Identificacion</th>
+								<th style="text-align: center;">Primer Nombre</th>
+								<th style="text-align: center;">Segundo Nombre </th>
+								<th style="text-align: center;">Primer Apellido</thstyle="text-align: center;">
+								<th style="text-align: center;">Segundo Apellido </th>
+								<th style="text-align: center;">ARL</th>
+								<th style="text-align: center;">EPS</th>
+								<th class="text-center">&#128222; </th>
+								<th style="text-align: center;">ACCIONES </th>
+
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="persona:${personas}">
+								<td th:text="${persona.id}"></td>
+								<td th:text="${persona.persona_identificacion}"></td>
+								<td th:text="${persona.persona_nombre1}"></td>
+								<td th:text="${persona.persona_nombre2}"></td>
+								<td th:text="${persona.persona_apellido1}"></td>
+								<td th:text="${persona.persona_apellido2}"></td>
+
+								<td>
+									<img th:src="@{${persona.persona_arl_ruta} +'/'+ ${persona.persona_arl_archivo}} "
+										width="80" height="40">
+								</td>
+
+								<td>
+									<img th:src="@{${persona.persona_eps_ruta} +'/'+ ${persona.persona_eps_archivo}} "
+										width="80" height="40">
+								</td>
+
+								<td th:text="${persona.persona_telefono}"></td>
+
+
+								<td>
+									<a th:href="@{/editar/} +${persona.id}"
+										class="btn btn-outline-warning">Editar&#128190;</a>
+									<a th:href="@{/eliminar/}+${persona.id}"
+										class="btn btn-outline-danger">Eliminar&#10060;</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+	<!--	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>-->
+	<!--	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>-->
+	<!--	<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>-->
+
+
+
+	<!--OTRO SCRIPTS PARA PAGINAS-->
+	<th:block layout:fragment="page-scripts">
+
+	<script>
+
+		$(document).ready(function () {
+			$('#tabla_persona').DataTable({
+				"language": {
+					"lengthMenu": "Mostrar _MENU_ resgistros",
+					"zeroRecords": "No se encontraron resultados",
+					"info": "Mostrando registros del _START_ al _END_  de un total de  _TOTAL_ registros",
+					"infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+					"infoFiltered": "(Filtrado de un total de _MAX_ registros)",
+					"sSearch": "Buscar",
+					"oPaginate": {
+						"sFirst": "Primero",
+						"sLast": "Ultimo",
+						"sNext": "	&#10145;",
+						"sPrevious": "	&#11013;",
+					},
+					"sProcessing": "Procesando..."
+				}
+			});
+		});
+
+	</script>
+	</th:block>
+
+</body>
+
+</html>

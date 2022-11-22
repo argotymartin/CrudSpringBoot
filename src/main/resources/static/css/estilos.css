@@ -1,0 +1,20 @@
+.sorting::before {
+			color: white;
+		}
+.crear_persona{
+    position: absolute;
+    top: 125px;
+    left: 310px;
+    z-index: 1;
+}
+.crear_persona:hover{
+	transform: scale(1.1);
+}
+.fa-solid, .fas {
+   
+    font-size: 21px;
+}
+.content{
+	display: flex;
+	justify-content: center;
+}
