@@ -22,12 +22,12 @@ public class Persona {
 	private String persona_arl_archivo;
 	private String persona_eps_ruta;
 	private String persona_eps_archivo;
-	
-	
+
+
 	public Persona() {
 		super();
 	}
-	
+
 	public Persona(int id, String persona_identificacion, String persona_nombre1, String persona_nombre2,String persona_apellido1, String persona_apellido2,
 			String persona_telefono, String persona_arl_ruta, String persona_arl_archivo, String persona_eps_ruta, String persona_eps_archivo) {
 		super();
@@ -35,15 +35,15 @@ public class Persona {
 		this.persona_identificacion = persona_identificacion;
 		this.persona_nombre1 = persona_nombre1;
 		this.persona_nombre2 = persona_nombre2;
-		
+
 		this.persona_apellido1 = persona_apellido1;
 		this.persona_apellido2 = persona_apellido2;
 		this.persona_arl_ruta = persona_arl_ruta;
 		this.persona_arl_archivo = persona_arl_archivo;
 		this.persona_eps_ruta = persona_eps_ruta;
 		this.persona_eps_archivo = persona_eps_archivo;
-		
-		
+
+
 		this.persona_telefono = persona_telefono;
 	}
 	public int getId() {
@@ -124,6 +124,6 @@ public class Persona {
 	}
 
 
-	
-		
+
+
 }

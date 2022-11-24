@@ -16,7 +16,7 @@ public class PersonaService implements IpersonaService {
 
 	@Autowired
 	private IPersona data;
-	
+
 	@Override
 	public List<Persona> listar() {
 		return (List<Persona>) data.findAll();
@@ -30,7 +30,7 @@ public class PersonaService implements IpersonaService {
 
 	@Override
 	public int save(Persona p) {
-		
+
 		int res=0;
 		Persona persona=data.save(p);
 		if (!persona.equals(null)) {
